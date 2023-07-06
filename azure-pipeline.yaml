@@ -1,0 +1,26 @@
+pipeline {
+  agent any
+  
+  stages {
+	stage('Git Checkout') {
+      steps {
+        sh 'git clone https://github.com/Poojitha2022/terraform.git'
+      }
+	}
+    stage('terraform init') {
+      steps {     
+        sh "terraform init"
+      }
+    }
+	stage('terraform validate') {
+      steps {        
+        sh "terraform validate"
+      }
+    }
+	stage('terraform plan') {
+      steps {     
+	    sh "terraform plan"
+      }
+    }
+  }
+}
